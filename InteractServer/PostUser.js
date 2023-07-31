@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Text, View } from "react-native";
 import axios from "axios";
-import { server } from "../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 //insert user if not exist
 export default function PostUser(data) {
   axios.get(server + "/users/" + data.UserEmail).then((response) => {

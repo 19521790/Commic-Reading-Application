@@ -18,7 +18,7 @@ import { Entypo } from "@expo/vector-icons";
 import SearchSlide from "../components/SearchScreen/SearchSlide";
 import GenreSlide from "../components/GenreScreen/GenreSlide";
 import axios from "axios";
-import { server } from "../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import images from "../components/SearchScreen/Banner";
 import SingleTabNewRelease from "../components/SearchScreen/SingleTabNewRelease";
 import TopLikeTitle from "../components/GenreScreen/TopLikeTitle";
@@ -90,7 +90,7 @@ export default function GenreScreen({ route, navigation }) {
             zIndex: 10,
           }}
         >
-          <Ionicons name='chevron-back' size={24} color={Color.white} />
+          <Ionicons name="chevron-back" size={24} color={Color.white} />
         </Pressable>
         <Animated.View
           style={{
@@ -111,7 +111,7 @@ export default function GenreScreen({ route, navigation }) {
             <Text style={Font.baseTitle} numberOfLines={1}>
               {nameGenre}
             </Text>
-            <Entypo name='chevron-down' size={24} color='white' />
+            <Entypo name="chevron-down" size={24} color="white" />
           </Pressable>
         </Animated.View>
       </Animated.View>

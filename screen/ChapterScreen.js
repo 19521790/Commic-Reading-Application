@@ -14,7 +14,7 @@ import {
 } from "react-native";
 import { Color } from "../variable/Color";
 
-import { server } from "../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import Linear from "../components/ChapterScreen/Linear";
 import SliderScroll from "../components/ChapterScreen/SliderScroll";
 import NavigateButton from "../components/ChapterScreen/NavigateButton";

@@ -26,7 +26,7 @@ import { deleteResume, insertResume } from "../InteractServer/ResumeSave";
 import { InitialResume, Login, Logout, SetIdUser } from "../redux/actions";
 import SyncData from "../components/Popup/SyncData";
 import axios from "axios";
-import { server } from "../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import ResumeReading from "../components/HomeScreen/ResumeReading";
 import Stripe from "../components/Stripe/Stripe";
 import { AntDesign } from "@expo/vector-icons";
@@ -175,7 +175,7 @@ class ProfileScreen extends Component {
               {this.state.coin} coins
             </Text>
             <Pressable onPress={() => this.innerRef.current(true)}>
-              <AntDesign name='pluscircleo' size={30} color='white' />
+              <AntDesign name="pluscircleo" size={30} color="white" />
             </Pressable>
           </View>
 
@@ -190,7 +190,7 @@ class ProfileScreen extends Component {
     } else {
       return (
         <View style={{ alignItems: "center", width: "100%" }}>
-          <MaterialIcons name='account-circle' size={70} color='#595959' />
+          <MaterialIcons name="account-circle" size={70} color="#595959" />
           <Text
             style={{
               color: "white",
@@ -228,7 +228,7 @@ class ProfileScreen extends Component {
   render() {
     return (
       <View>
-        <ScrollView style={styles.container} keyboardShouldPersistTaps='always'>
+        <ScrollView style={styles.container} keyboardShouldPersistTaps="always">
           <View
             style={[
               styles.account,
@@ -242,22 +242,22 @@ class ProfileScreen extends Component {
             <Text style={[Font.title, { marginBottom: 20 }]}>Reading List</Text>
             <View style={styles.reading}>
               <ReadingList
-                iconName='readme'
-                source='awesome5'
-                title='Read Later'
-                color='#e65c00'
-                type='readlater'
+                iconName="readme"
+                source="awesome5"
+                title="Read Later"
+                color="#e65c00"
+                type="readlater"
                 count_title={this.state.readlater.length}
                 setReadingListPopUp={() =>
                   this.setReadingListPopup("Read Later", this.state.readlater)
                 }
               />
               <ReadingList
-                iconName='bell'
-                source='awesome5'
-                title='Subscribed'
-                color='#cc00ff'
-                type='subscribe'
+                iconName="bell"
+                source="awesome5"
+                title="Subscribed"
+                color="#cc00ff"
+                type="subscribe"
                 count_title={this.state.subscribe.length}
                 setReadingListPopUp={() =>
                   this.setReadingListPopup("Subscribed", this.state.subscribe)
@@ -266,21 +266,21 @@ class ProfileScreen extends Component {
             </View>
             <View style={styles.reading}>
               <ReadingList
-                iconName='like2'
-                source='ant'
-                title='Liked'
-                color='#008ae6'
-                type='like'
+                iconName="like2"
+                source="ant"
+                title="Liked"
+                color="#008ae6"
+                type="like"
                 count_title={this.state.like.length}
                 setReadingListPopUp={() =>
                   this.setReadingListPopup("Liked", this.state.like)
                 }
               />
               <ReadingList
-                iconName='clouddownload'
-                source='ant'
-                title='Downloaded'
-                color='#009933'
+                iconName="clouddownload"
+                source="ant"
+                title="Downloaded"
+                color="#009933"
                 count_title={0}
                 setReadingListPopUp={() => {}}
               />

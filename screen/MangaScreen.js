@@ -17,7 +17,7 @@ import { Entypo } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Font } from "../variable/Font";
 import axios from "axios";
-import { server } from "../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import ContainerBody from "../components/MangaScreen/ContainerBody";
 import MangaSetting from "../components/Popup/MangaSettings";
 import ModelPopup from "../components/Popup/ModelPopup";
@@ -113,7 +113,7 @@ export default function MangaScreen({ route, navigation }) {
         style={[styles.control, { transform: [{ translateY: ref }] }]}
       >
         <Pressable onPress={() => navigation.pop()}>
-          <Ionicons name='chevron-back' size={24} color={Color.white} />
+          <Ionicons name="chevron-back" size={24} color={Color.white} />
         </Pressable>
         <Animated.View
           style={{
@@ -137,7 +137,7 @@ export default function MangaScreen({ route, navigation }) {
             }
           >
             <Entypo
-              name='dots-three-horizontal'
+              name="dots-three-horizontal"
               size={20}
               color={Color.white}
               style={{ marginHorizontal: 15 }}
