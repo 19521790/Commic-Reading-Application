@@ -2,7 +2,7 @@ import React, { Component, useEffect } from "react";
 import { Text, View, StyleSheet, Image, Pressable } from "react-native";
 import { Color } from "../../variable/Color";
 import { Font } from "../../variable/Font";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import Line from "../AllScreen/Line";
 
 function SearchTags({ data, navigation }) {

@@ -7,7 +7,7 @@ import { Font } from "../../variable/Font";
 import { InitialResume } from "../../redux/actions";
 import { getResume } from "../../InteractServer/ResumeSave";
 import axios from "axios";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 
 //pop up login
 class SyncData extends Component {

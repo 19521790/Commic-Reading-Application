@@ -1,7 +1,7 @@
 import { StripeProvider } from "@stripe/stripe-react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { Platform, Alert } from "react-native";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import Card from "./Card";
 
 export const publish =

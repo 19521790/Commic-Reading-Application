@@ -11,7 +11,7 @@ import {
 import { Color } from "../../variable/Color";
 
 import { Font } from "../../variable/Font";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import { LinearGradient } from "expo-linear-gradient";
 import Circle from "../AllScreen/Circle";
 import BorderTags from "../AllScreen/BorderTags";

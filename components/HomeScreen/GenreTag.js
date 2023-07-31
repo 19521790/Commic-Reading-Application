@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 
 function GenreTag({ image, name, navigation, idCategory }) {
   return (

@@ -17,7 +17,7 @@ import { Font } from "../../variable/Font";
 import SearchPopup from "../Popup/SearchPopup";
 import { useEffect } from "react";
 import axios from "axios";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 
 export default function SearchTabBar({ navigation }) {
   const loose_focus = useRef();
@@ -74,16 +74,16 @@ export default function SearchTabBar({ navigation }) {
             ref={loose_focus}
             style={styles.input}
             onFocus={() => transform()}
-            placeholder='Search'
+            placeholder="Search"
             placeholderTextColor={Color.white}
             value={searchContent}
             onChangeText={set_searchContent}
           />
           <AntDesign
-            name='search1'
+            name="search1"
             style={styles.searchButton}
             size={24}
-            color='white'
+            color="white"
           />
           <Pressable
             style={styles.cancel_button}

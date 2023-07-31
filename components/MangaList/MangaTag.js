@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View, Image, Pressable, StyleSheet } from "react-native";
 
 import { Font } from "../../variable/Font";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import { Ionicons } from "@expo/vector-icons";
 import { Color } from "../../variable/Color";
 

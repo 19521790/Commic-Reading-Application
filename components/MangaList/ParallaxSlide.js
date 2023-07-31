@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import { View, Text, Animated } from "react-native";
 import { Font } from "../../variable/Font";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import BigManga from "./BigManga";
 
 export default function ParallaxSlide({ navigation }) {

@@ -5,7 +5,7 @@ import { Font } from "../../variable/Font";
 import { useSelector } from "react-redux";
 import Stats from "../AllScreen/Stats";
 import axios from "axios";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 
 export default function ReadingList(props) {
   return (

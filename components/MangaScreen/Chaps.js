@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import { Color } from "../../variable/Color";
 import { Font } from "../../variable/Font";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { useSelector, useDispatch } from "react-redux";
@@ -77,7 +77,7 @@ export default function Chaps(props) {
   }
   function itemPay(item) {
     if (item.Pay > 0 && !user_payData.includes(item.idChapter)) {
-      return <FontAwesome name='lock' size={24} color='white' />;
+      return <FontAwesome name="lock" size={24} color="white" />;
     }
   }
   return (
@@ -105,7 +105,7 @@ export default function Chaps(props) {
                   <Text style={Font.baseTitle}>{item.status}</Text>
                 </View>
                 {item.Free == 1 && (
-                  <MaterialIcons name='money-off' size={24} color='white' />
+                  <MaterialIcons name="money-off" size={24} color="white" />
                 )}
                 {itemPay(item)}
               </View>

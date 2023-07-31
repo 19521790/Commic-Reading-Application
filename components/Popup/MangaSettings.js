@@ -13,7 +13,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import { Color } from "../../variable/Color";
 import Line from "../AllScreen/Line";
 import { connect } from "react-redux";
@@ -132,7 +132,7 @@ class MangaSetting extends Component {
   render() {
     return (
       <View>
-        <Modal visible={this.state.isShowing} animationType='slide' transparent>
+        <Modal visible={this.state.isShowing} animationType="slide" transparent>
           <Pressable
             style={{ flex: 3 }}
             onPress={() => this.setState({ isShowing: false })}
@@ -143,7 +143,7 @@ class MangaSetting extends Component {
               onPress={() => this.setState({ isShowing: false })}
               style={{ position: "absolute", top: 20, right: 20 }}
             >
-              <AntDesign name='closecircle' size={24} color={Color.gray} />
+              <AntDesign name="closecircle" size={24} color={Color.gray} />
             </Pressable>
             <View style={styles.headerContainer}>
               <Image
@@ -172,18 +172,18 @@ class MangaSetting extends Component {
                 }}
               >
                 <MaterialCommunityIcons
-                  name='book-open-variant'
+                  name="book-open-variant"
                   size={24}
-                  color='white'
+                  color="white"
                 />
                 <Text style={styles.title}>Read</Text>
               </Pressable>
               <Line />
               <Pressable style={styles.row}>
                 <MaterialCommunityIcons
-                  name='share-variant'
+                  name="share-variant"
                   size={24}
-                  color='white'
+                  color="white"
                 />
                 <Text style={styles.title}>Share</Text>
               </Pressable>
@@ -195,9 +195,9 @@ class MangaSetting extends Component {
                 }}
               >
                 <MaterialCommunityIcons
-                  name='calendar-plus'
+                  name="calendar-plus"
                   size={24}
-                  color='white'
+                  color="white"
                 />
                 <Text style={styles.title}>
                   {this.state.readlater
@@ -212,14 +212,14 @@ class MangaSetting extends Component {
                   this.likeFunction();
                 }}
               >
-                <AntDesign name='like1' size={24} color='white' />
+                <AntDesign name="like1" size={24} color="white" />
                 <Text style={styles.title}>
                   {this.state.like ? "Undo Like" : "Like"}
                 </Text>
               </Pressable>
               <Line />
               <Pressable style={styles.row}>
-                <AntDesign name='dislike1' size={24} color='white' />
+                <AntDesign name="dislike1" size={24} color="white" />
                 <Text style={styles.title}>Do not Recommend</Text>
               </Pressable>
               <Line />
@@ -229,7 +229,7 @@ class MangaSetting extends Component {
                   this.subscribeFunction();
                 }}
               >
-                <FontAwesome name='bell-o' size={24} color='white' />
+                <FontAwesome name="bell-o" size={24} color="white" />
                 <Text style={styles.title}>
                   {this.state.subscribe ? "Unsubscribe" : "Subscribe"}
                 </Text>

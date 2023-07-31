@@ -2,7 +2,7 @@ import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 
 function CommentTag({ name, avatar, comment }) {
   return (
@@ -38,9 +38,9 @@ function CommentTag({ name, avatar, comment }) {
             }}
           >
             <MaterialCommunityIcons
-              name='share-all'
+              name="share-all"
               size={16}
-              color='#A8A8A8'
+              color="#A8A8A8"
             />
             <Text style={{ color: "#A8A8A8", fontSize: 16, marginLeft: 3 }}>
               0
@@ -54,7 +54,7 @@ function CommentTag({ name, avatar, comment }) {
               marginRight: 10,
             }}
           >
-            <AntDesign name='like2' size={16} color='#A8A8A8' />
+            <AntDesign name="like2" size={16} color="#A8A8A8" />
             <Text style={{ color: "#A8A8A8", fontSize: 16, marginLeft: 3 }}>
               0
             </Text>

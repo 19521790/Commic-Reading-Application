@@ -1,7 +1,7 @@
 import React, { Component, useEffect } from "react";
 import { Text, View, StyleSheet, Image, Pressable } from "react-native";
 import { Font } from "../../variable/Font";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import dateFormat from "dateformat";
 import { useState } from "react";
 import { useRef } from "react";

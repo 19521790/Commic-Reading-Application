@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { View, Text, ScrollView } from "react-native";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import MangaTag from "../MangaList/MangaTag";
 
 export default function ListFlatlist({ navigation, type }) {

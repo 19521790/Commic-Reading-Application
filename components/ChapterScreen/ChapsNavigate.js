@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import { Color } from "../../variable/Color";
 import { Font } from "../../variable/Font";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import { useSelector } from "react-redux";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
@@ -18,7 +18,7 @@ export default function ChapsNavigate({
   const refPopup = useRef();
   function itemPay(item) {
     if (item.Pay > 0 && !user_payData.includes(item.idChapter)) {
-      return <FontAwesome name='lock' size={24} color='white' />;
+      return <FontAwesome name="lock" size={24} color="white" />;
     }
   }
   return (
@@ -62,7 +62,7 @@ export default function ChapsNavigate({
                 <Text style={Font.baseTitle}>{item.status}</Text>
               </View>
               {item.Free == 1 && (
-                <MaterialIcons name='money-off' size={24} color='white' />
+                <MaterialIcons name="money-off" size={24} color="white" />
               )}
               {itemPay(item)}
             </View>

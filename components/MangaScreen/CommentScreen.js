@@ -15,7 +15,7 @@ import { useSelector } from "react-redux";
 import CommentTag from "./CommentTag";
 import { useRef } from "react";
 import axios from "axios";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import { getdata } from "../../InteractServer/GetUserSqlite";
 function CommentScreen(props) {
   const [show, setShow] = useState(false);
@@ -64,16 +64,16 @@ function CommentScreen(props) {
     <View>
       <Pressable onPress={() => setShow(true)}>
         <MaterialCommunityIcons
-          name='comment-processing-outline'
+          name="comment-processing-outline"
           size={20}
-          color='#e6e6e6'
+          color="#e6e6e6"
         />
       </Pressable>
       <Modal visible={show}>
         <ScrollView style={styles.container}>
           <View style={styles.header}>
             <Pressable onPress={() => setShow(false)}>
-              <AntDesign name='closecircle' size={30} color='#8E8E93' />
+              <AntDesign name="closecircle" size={30} color="#8E8E93" />
             </Pressable>
             <Text style={styles.commentCount}>{data.length} comments</Text>
           </View>
@@ -104,8 +104,8 @@ function CommentScreen(props) {
         <View style={styles.bottom}>
           <TextInput
             style={styles.addComment}
-            placeholder='Add your comment'
-            placeholderTextColor='#939393'
+            placeholder="Add your comment"
+            placeholderTextColor="#939393"
             value={comment}
             onChangeText={set_comment}
           />
@@ -114,7 +114,7 @@ function CommentScreen(props) {
               commentPush();
             }}
           >
-            <Ionicons name='ios-paper-plane' size={30} color='#686868' />
+            <Ionicons name="ios-paper-plane" size={30} color="#686868" />
           </Pressable>
         </View>
       </Modal>

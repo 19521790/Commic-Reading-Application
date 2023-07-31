@@ -7,7 +7,7 @@ import {
   Pressable,
   Image,
 } from "react-native";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import { LinearGradient } from "expo-linear-gradient";
 import axios from "axios";
 import { useState } from "react";

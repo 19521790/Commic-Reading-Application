@@ -7,7 +7,7 @@ import { View, useWindowDimensions, ScrollView, Text } from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 
 import { Color } from "../../variable/Color";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 import SingleTabScrollView from "./SingleTabScrollView";
 
 export default function TabScrollView({ navigation }) {

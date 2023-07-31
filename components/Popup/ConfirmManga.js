@@ -16,7 +16,7 @@ import { InitialResume, PushPurchase, SetPurchase } from "../../redux/actions";
 
 import { Color } from "../../variable/Color";
 import { Font } from "../../variable/Font";
-import { server } from "../../variable/ServerName";
+const server = "http://13.250.45.19:3000";
 
 //pop up login
 class ConfirmManga extends Component {
