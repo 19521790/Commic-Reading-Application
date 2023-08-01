@@ -20,6 +20,8 @@ router.get("/:idChapter", (req, res) => {
         for (let i = 1; i <= 20; i++) {
           img.push({
             imgUrl: link + "(" + order + ")/" + (i >= 10 ? i : "0" + i) + ".jpg",
+            width: "",
+            height: "",
           });
         }
         res.send(img);
