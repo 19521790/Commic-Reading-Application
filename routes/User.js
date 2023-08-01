@@ -14,8 +14,8 @@ router.get("/", (req, res) => {
 });
 
 //check user
-router.get("/get/:idUser", (req, res) => {
-    let sql = "select * from user where idUser=?";
+router.get("/get/:email", (req, res) => {
+    let sql = "select * from user where Email=?";
     sqlConnection(sql, [req.params.idUser], (err, results) => {
         if (err) {
             res.send(false);
