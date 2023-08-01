@@ -35,6 +35,7 @@ router.post("/", (req, res) => {
     Name: req.body.UserName,
     Email: req.body.UserEmail,
     Image: req.body.UserImage,
+    Coin: 0
   };
 
   let sql = "insert into user set ?";
