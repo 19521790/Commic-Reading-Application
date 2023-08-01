@@ -4,8 +4,8 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const stripe = require('stripe')('sk_test_51KFt1gF2EZ3ThaNaIhBhZKtGvI02LpTE3JXSMAGvXkfdtYrhQl3tBYmbsCDvruGSiSKiB9nzNOwPbk216b886v2800Dn3iPopg');
-//
-app.post("/create-payment-intent", async (req, res) => {
+
+app.post("/create-payment-intent/:email", async (req, res) => {
     try {
         // const paymentIntent = await stripe.paymentIntent.create({
         //     amout: 1099,
@@ -19,8 +19,8 @@ app.post("/create-payment-intent", async (req, res) => {
         });
         const clientSecret = paymentIntent.client_secret;
 
-        let sql = "update user set coin = coin + 100 where idUser=103288932652822225155;";
-        sqlConnection(sql, (err, results) => {
+        let sql = "update user set coin = coin + 100 where Email=(?);";
+        sqlConnection(sql, [req.params.email], (err, results) => {
             if (err) {
                 res.send(false);
             } else {
@@ -39,6 +39,42 @@ app.post("/create-payment-intent", async (req, res) => {
         res.json({ error: e.message });
     }
 })
+
+// //stripe payment
+// app.post("/create-payment-intent", async (req, res) => {
+//     try {
+//         // const paymentIntent = await stripe.paymentIntent.create({
+//         //     amout: 1099,
+//         //     currency: "usd",
+//         //     payment_method_types: ["card"],
+//         // });
+//         const paymentIntent = await stripe.paymentIntents.create({
+//             amount: 2000,
+//             currency: 'usd',
+//             payment_method_types: ['card'],
+//         });
+//         const clientSecret = paymentIntent.client_secret;
+
+//         let sql = "update user set coin = coin + 100 where idUser=103288932652822225155;";
+//         sqlConnection(sql, (err, results) => {
+//             if (err) {
+//                 res.send(false);
+//             } else {
+//                 if (results.length == 0) {
+//                     res.send(false);
+//                 } else {
+//                     res.json({
+//                         clientSecret: clientSecret
+//                     });
+//                 }
+//             }
+//         });
+
+//     } catch (e) {
+//         console.log(e.message);
+//         res.json({ error: e.message });
+//     }
+// })
 
 app.use(
     cors({
