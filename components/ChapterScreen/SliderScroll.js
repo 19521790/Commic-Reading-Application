@@ -46,7 +46,9 @@ export default class SliderScroll extends Component {
       clearTimeout(this.state.timeout);
     }
   };
+
   render() {
+    console.log(this.state.actual_height);
     return (
       <View
         style={[
@@ -77,6 +79,7 @@ export default class SliderScroll extends Component {
             height: 5,
           }}
           onValueChange={(e) => {
+            console.log(this.state.actual_height);
             this.props.scrollOffset(
               this.state.actual_height - e[0] * this.state.actual_height
             );

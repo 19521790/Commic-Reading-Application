@@ -145,7 +145,7 @@ export default function ChapterScreen({ route, navigation }) {
                 (windowWidth * parseInt(dimensions.height)) /
                   parseInt(dimensions.width)
               ) + 15;
-
+            final_height += height;
             array.push(height);
           } else {
             console.log("Failed to get image dimensions.");

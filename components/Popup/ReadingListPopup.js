@@ -66,7 +66,7 @@ class ReadingListPopup extends Component {
                   style={{ position: "absolute", left: 15, paddingTop: 25 }}
                   onPress={() => this.setState({ modalVisible: false })}
                 >
-                  <Entypo name='chevron-down' size={24} color='white' />
+                  <Entypo name="chevron-down" size={24} color="white" />
                 </Pressable>
 
                 <Text style={Font.title}>{this.state.title}</Text>
@@ -108,7 +108,7 @@ class ReadingListPopup extends Component {
                 style={{ position: "absolute", left: 15, paddingTop: 25 }}
                 onPress={() => this.setState({ modalVisible: false })}
               >
-                <Entypo name='chevron-down' size={24} color='white' />
+                <Entypo name="chevron-down" size={24} color="white" />
               </Pressable>
 
               <Text style={[Font.title, { marginTop: 25 }]}>
@@ -122,7 +122,7 @@ class ReadingListPopup extends Component {
                   justifyContent: "center",
                 }}
               >
-                <Ionicons name='person-add-outline' size={70} color='white' />
+                <Ionicons name="person-add-outline" size={70} color="white" />
                 <Text style={[Font.baseTitle, { marginVertical: 20 }]}>
                   Please Sign in to have more features
                 </Text>
@@ -149,6 +149,7 @@ class ReadingListPopup extends Component {
 
 const styles = StyleSheet.create({
   header: {
+    marginTop: 50,
     width: "100%",
     height: "100%",
     backgroundColor: Color.baseColor,

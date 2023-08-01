@@ -29,6 +29,7 @@ class ModelPopup extends Component {
 
     await setTimeout(() => {
       LoginGoogle().then((result) => {
+        console.log(result);
         if (result) {
           const data = {
             UserId: result.id,
@@ -65,12 +66,12 @@ class ModelPopup extends Component {
               onPress={() => this.setModalVisible(false)}
               style={styles.closeButton}
             >
-              <AntDesign name='closecircle' size={24} color='white' />
+              <AntDesign name="closecircle" size={24} color="white" />
             </Pressable>
             <MaterialCommunityIcons
-              name='account-arrow-left'
+              name="account-arrow-left"
               size={200}
-              color='#b366ff'
+              color="#b366ff"
               style={{ marginTop: 20 }}
             />
             <Text style={Font.baseTitle}>Sign in or create a new account</Text>
@@ -100,7 +101,7 @@ class ModelPopup extends Component {
               </View>
               {!this.state.login && (
                 <View style={{ flexDirection: "row" }}>
-                  <MaterialIcons name='email' size={24} color='black' />
+                  <MaterialIcons name="email" size={24} color="black" />
                   <Text
                     style={[Font.baseTitle, { color: "black", marginLeft: 10 }]}
                   >
