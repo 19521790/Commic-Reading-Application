@@ -55,11 +55,16 @@ export default function HomeScreen({ navigation }) {
 
   useEffect(() => {
     let break_get = true;
-    axios.get(server + "/genre").then((res) => {
-      if (break_get) {
-        set_data(res.data);
-      }
-    });
+    axios
+      .get(server + "/genre")
+      .then((res) => {
+        if (break_get) {
+          set_data(res.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     getdata().then((res) => {
       if (break_get) {

@@ -55,22 +55,28 @@ class ProfileScreen extends Component {
       coin: 0,
     };
   }
-
+  increaseCoin = () => {
+    this.setState({ coin: this.state.coin + 100 });
+  };
   componentDidMount() {
     this.props.navigation.addListener("tabPress", (e) => {
       this.getUserInfo();
+
       this.getDataLike();
-      this.getCoin();
     });
 
     this.getUserInfo();
+
     this.getDataLike();
-    this.getCoin();
   }
   getUserInfo = () => {
     getdata().then((res) => {
       if (res) {
         this.setState({ userLogin: true, userInfo: res });
+
+        axios.get(server + "/users/get/" + res.UserEmail).then((res) => {
+          this.setState({ coin: res.data[0].Coin });
+        });
       } else {
         this.setState({ userLogin: false });
       }
@@ -102,13 +108,7 @@ class ProfileScreen extends Component {
       }
     }
   }
-  getCoin() {
-    if (this.props.userlog) {
-      axios.get(server + "/users/get/" + this.props.idUser).then((res) => {
-        this.setState({ coin: res.data[0].Coin });
-      });
-    }
-  }
+  getCoin() {}
   changeLoginInfo = (login) => {
     this.setState({ userLogin: login });
     this.successRef.current.setModalVisible(true);
@@ -356,7 +356,7 @@ class ProfileScreen extends Component {
             Sync_data={this.Sync_data}
             changeLoginInfo={this.changeLoginInfo}
           />
-          <Stripe innerRef={this.innerRef} />
+          <Stripe innerRef={this.innerRef} increaseCoin={this.increaseCoin} />
         </ScrollView>
       </View>
     );

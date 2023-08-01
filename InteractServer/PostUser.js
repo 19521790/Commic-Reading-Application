@@ -10,7 +10,7 @@ const server = EXPO_PUBLIC_API_URL;
 //insert user if not exist
 export default function PostUser(data) {
   console.log(data);
-  axios.get(server + "/users/" + data.UserEmail).then((response) => {
+  axios.get(server + "/users/get/" + data.UserEmail).then((response) => {
     console.log(response);
     if (!response.data) {
       //function post user to server

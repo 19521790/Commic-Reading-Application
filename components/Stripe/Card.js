@@ -12,7 +12,9 @@ import {
 } from "react-native";
 import { API_URL } from "./Stripe";
 import { MaterialIcons } from "@expo/vector-icons";
-function Card({ innerRef }) {
+import { getdata } from "../../InteractServer/GetUserSqlite";
+import { EXPO_PUBLIC_API_URL } from "../../variable/constants";
+function Card({ innerRef, increaseCoin }) {
   const [email, setEmail] = useState();
   const [cardDetails, setCardDetails] = useState();
   const { confirmPayment, loading } = useConfirmPayment();
@@ -30,33 +32,52 @@ function Card({ innerRef }) {
   };
 
   const handlePayPress = async () => {
-    if (!cardDetails?.complete || !email) {
+    if (!cardDetails?.complete) {
       Alert.alert("Please enter complete card details and Email");
       return;
     }
-
-    const billingDetails = { email: email };
-
-    try {
-      const { clientSecret, error } = await fetchPaymentIntentClientSecret();
-
-      if (error) {
-        console.log(error);
-      } else {
-        const { paymentIntent, error } = await confirmPayment(clientSecret, {
-          type: "Card",
-          billingDetails: billingDetails,
-        });
-        if (error) {
-          alert(`Payment Confirmation Error ${error.message}`);
-        } else if (paymentIntent) {
-          alert("Payment Successful");
-          console.log("Payment successful", paymentIntent);
+    const server = EXPO_PUBLIC_API_URL;
+    getdata().then(async (res) => {
+      console.log(res.UserEmail);
+      console.log(`${server}/create-payment-intent/${res.UserEmail}`);
+      const response = fetch(
+        `${server}/create-payment-intent/${res.UserEmail}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      }
-    } catch (e) {
-      console.log(e);
-    }
+      );
+      setModalVisible(false);
+      alert("Playment success");
+      setCardDetails(null);
+      increaseCoin();
+      // const billingDetails = { email: res.UserEmail };
+      // try {
+      // const { clientSecret, error } = await fetchPaymentIntentClientSecret();
+
+      // if (error) {
+      //   console.log(error);
+      // } else {
+      //   // const { paymentIntent, error } = await confirmPayment(clientSecret, {
+      //   //   type: "Card",
+      //   //   billingDetails: billingDetails,
+      //   // });
+      //   // console.log(paymentIntent);
+      //   // if (error) {
+      //   //   alert(`Payment Confirmation Error ${error.message}`);
+      //   // } else if (paymentIntent) {
+      //   //   alert("Payment Successful");
+      //   //   console.log("Payment successful", paymentIntent);
+      //   // }
+
+      //   return;
+      // }
+      // } catch (e) {
+      //   console.log(e);
+      // }
+    });
   };
   const [visible, set_visible] = useState(false);
   useEffect(() => {
@@ -66,21 +87,15 @@ function Card({ innerRef }) {
     set_visible(visible);
   }
   return (
-    <Modal animationType='slide' visible={visible}>
+    <Modal animationType="slide" visible={visible}>
       <View style={styles.container}>
         <Pressable
           style={{ position: "absolute", top: 10, left: 0 }}
           onPress={() => setModalVisible(false)}
         >
-          <MaterialIcons name='cancel' size={24} color='black' />
+          <MaterialIcons name="cancel" size={24} color="black" />
         </Pressable>
-        <TextInput
-          autoCapitalize='none'
-          placeholder='E-mail'
-          keyboardType='name-phone-pad'
-          onChange={(value) => setEmail(value.nativeEvent.text)}
-          style={styles.input}
-        />
+
         <CardField
           onCardChange={(cardDetails) => {
             setCardDetails(cardDetails);
@@ -97,7 +112,7 @@ function Card({ innerRef }) {
             backgroundColor: "#efefef",
           }}
         />
-        <Button title='Pay' onPress={handlePayPress} disabled={loading} />
+        <Button title="Pay" onPress={handlePayPress} disabled={loading} />
       </View>
     </Modal>
   );

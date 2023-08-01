@@ -29,7 +29,7 @@ export const API_URL = server;
 // }
 const serverAWS = EXPO_PUBLIC_API_AWS;
 const server = EXPO_PUBLIC_API_URL;
-function Stripe({ innerRef }) {
+function Stripe({ innerRef, increaseCoin }) {
   const [publishableKey, setPublishableKey] = useState(publish);
 
   // useEffect(() => {
@@ -44,7 +44,7 @@ function Stripe({ innerRef }) {
 
   return (
     <StripeProvider publishableKey={publishableKey}>
-      <Card innerRef={innerRef} />
+      <Card increaseCoin={increaseCoin} innerRef={innerRef} />
     </StripeProvider>
   );
 }
