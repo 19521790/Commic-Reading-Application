@@ -19,7 +19,7 @@ router.get("/:idChapter", (req, res) => {
         let order = results[0].Order;
         for (let i = 1; i <= 20; i++) {
           img.push({
-            imgUrl: link + "(" + order + ")/" + (i < 10 ? i : "0" + i) + ".jpg",
+            imgUrl: link + "(" + order + ")/" + (i > 10 ? i : "0" + i) + ".jpg",
           });
         }
         res.send(img);
