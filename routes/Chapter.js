@@ -15,45 +15,68 @@ router.get("/:idChapter", (req, res) => {
       if (results.length == 0) {
         res.send("Chapter not exist");
       } else {
-        let idManga = results[0].manga_idManga;
+        let link = results[0].Link;
         let order = results[0].Order;
-        let path = "./manga/" + idManga + "/chap";
-        if (order != 1) {
-          path = path + " (" + order + ")";
+        for (let i = 1; i <= 20; i++) {
+          img.push({
+            imgUrl: link + "(" + order + ")/" + (i < 10 ? i : "0" + i) + ".jpg",
+          });
         }
-        fs.readdir(path, (err, files) => {
-          if (err) {
-            console.log(err);
-          } else {
-            if (order == 1) {
-              files.forEach((file) => {
-                let cur_path = idManga + "/chap/" + file;
-                const { width, height } = sizeOf("./manga/" + cur_path);
-                img.push({
-                  imgUrl: "/m/" + cur_path,
-                  width: width,
-                  height: height,
-                });
-              });
-              res.send(img);
-            } else {
-              files.forEach((file) => {
-                let cur_path = idManga + "/chap (" + order + ")/" + file;
-                const { width, height } = sizeOf("./manga/" + cur_path);
-
-                img.push({
-                  imgUrl: "/m/" + cur_path,
-                  width: width,
-                  height: height,
-                });
-              });
-              res.send(img);
-            }
-          }
-        });
+        res.send(img);
       }
     }
   });
-});
+}); 
+
+// router.get("/:idChapter", (req, res) => {
+//   let img = [];
+//   let sql = "select * from chapter where idChapter=?";
+//   sqlConnection(sql, [req.params.idChapter], (err, results) => {
+//     if (err) {
+//       res.send("Chapter not exist");
+//     } else {
+//       if (results.length == 0) {
+//         res.send("Chapter not exist");
+//       } else {
+//         let idManga = results[0].manga_idManga;
+//         let order = results[0].Order;
+//         let path = "./manga/" + idManga + "/chap";
+//         if (order != 1) {
+//           path = path + " (" + order + ")";
+//         }
+//         fs.readdir(path, (err, files) => {
+//           if (err) {
+//             console.log(err);
+//           } else {
+//             if (order == 1) {
+//               files.forEach((file) => {
+//                 let cur_path = idManga + "/chap/" + file;
+//                 const { width, height } = sizeOf("./manga/" + cur_path);
+//                 img.push({
+//                   imgUrl: "/m/" + cur_path,
+//                   width: width,
+//                   height: height,
+//                 });
+//               });
+//               res.send(img);
+//             } else {
+//               files.forEach((file) => {
+//                 let cur_path = idManga + "/chap (" + order + ")/" + file;
+//                 const { width, height } = sizeOf("./manga/" + cur_path);
+
+//                 img.push({
+//                   imgUrl: "/m/" + cur_path,
+//                   width: width,
+//                   height: height,
+//                 });
+//               });
+//               res.send(img);
+//             }
+//           }
+//         });
+//       }
+//     }
+//   });
+// });
 
 module.exports = router;
