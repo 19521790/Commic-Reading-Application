@@ -1,0 +1,35 @@
+{
+  "cli": {
+    "version": ">= 0.52.0"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_URL":"http://13.250.45.19:3000",
+        "EXPO_PUBLIC_API_AWS":"https://d1lks9mra1mm67.cloudfront.net"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_URL":"http://13.250.45.19:3000",
+        "EXPO_PUBLIC_API_AWS":"https://d1lks9mra1mm67.cloudfront.net"
+      }
+    },
+    "production": {
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL":"http://13.250.45.19:3000",
+        "EXPO_PUBLIC_API_AWS":"https://d1lks9mra1mm67.cloudfront.net"
+      }
+    }
+
+  },
+  "submit": {
+    "production": {}
+  }
+}

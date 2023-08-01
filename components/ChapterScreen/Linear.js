@@ -16,6 +16,7 @@ export default class Linear extends Component {
     this.state = {
       linearVisible: false,
       timeout: null,
+      listChapterVisible: false,
     };
   }
   componentWillUnmount() {
@@ -42,6 +43,11 @@ export default class Linear extends Component {
       clearTimeout(this.state.timeout);
     }
   };
+  setModalChapterVisible = (visible) => {
+    this.setState({
+      listChapterVisible: visible,
+    });
+  };
   render() {
     return (
       <LinearGradient
@@ -59,7 +65,7 @@ export default class Linear extends Component {
         <Pressable
           onPress={() => {
             // clearTimeout(this.state.timeout);
-            this.refChapter.current.setModalVisible(true);
+            this.setModalChapterVisible(true);
           }}
           style={styles.description}
         >
@@ -72,15 +78,20 @@ export default class Linear extends Component {
           style={[styles.circle, { left: 30 }]}
           onPress={() => this.props.navigation.pop()}
         >
-          <Feather name='x' size={18} color='white' />
+          <Feather name="x" size={18} color="white" />
         </Pressable>
-        <Pressable style={[styles.circle, { right: 30 }]}>
-          <Entypo name='dots-three-horizontal' size={18} color='white' />
+        <Pressable
+          style={[styles.circle, { right: 30 }]}
+          onPress={() => this.setState({ listChapterVisible: true })}
+        >
+          <Entypo name="dots-three-horizontal" size={18} color="white" />
         </Pressable>
         <ChapterPopup
           ref={this.refChapter}
           dataChapter={this.props.dataChapter}
           changeData={this.props.changeData}
+          visible={this.state.listChapterVisible}
+          setModalVisible={this.setModalChapterVisible}
         />
       </LinearGradient>
     );

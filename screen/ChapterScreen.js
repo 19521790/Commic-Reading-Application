@@ -14,7 +14,6 @@ import {
 } from "react-native";
 import { Color } from "../variable/Color";
 
-const server = "http://13.250.45.19:3000";
 import Linear from "../components/ChapterScreen/Linear";
 import SliderScroll from "../components/ChapterScreen/SliderScroll";
 import NavigateButton from "../components/ChapterScreen/NavigateButton";
@@ -22,12 +21,17 @@ import LoadingChapter from "../components/ChapterScreen/LoadingChapter";
 import { useDispatch, useSelector } from "react-redux";
 import { SetResumeReading } from "../redux/actions";
 import { insertResume } from "../InteractServer/ResumeSave";
-
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../variable/constants";
+// import ImageSize from "react-native-image-size";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 const top = windowHeight / 3;
 const bottom = (windowHeight / 3) * 2;
-
+const serverAWS = EXPO_PUBLIC_API_AWS;
+const server = EXPO_PUBLIC_API_URL;
 export default function ChapterScreen({ route, navigation }) {
   const {
     chapterId,
@@ -87,6 +91,7 @@ export default function ChapterScreen({ route, navigation }) {
     });
     return () => didBlurSubscription;
   }, [navigation]);
+
   useEffect(() => {
     let check = true;
     if (dataChapter) {
@@ -112,6 +117,57 @@ export default function ChapterScreen({ route, navigation }) {
     }
   }, []);
 
+  const getImageDimensionsFromUrl = (imageUrl) => {
+    return new Promise((resolve, reject) => {
+      Image.getSize(
+        imageUrl,
+        (width, height) => {
+          resolve({ width, height });
+        },
+        (error) => {
+          console.error("Error loading image:", error);
+          reject(error);
+        }
+      );
+    });
+  };
+  const processImageData = (data) => {
+    let final_height = 0;
+    const array = [];
+    const promises = [];
+
+    for (const element of data) {
+      const promise = getImageDimensionsFromUrl(serverAWS + element.imgUrl)
+        .then((dimensions) => {
+          if (dimensions) {
+            let height =
+              Math.floor(
+                (windowWidth * parseInt(dimensions.height)) /
+                  parseInt(dimensions.width)
+              ) + 15;
+
+            array.push(height);
+          } else {
+            console.log("Failed to get image dimensions.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error processing image data:", error);
+        });
+
+      promises.push(promise);
+    }
+
+    Promise.all(promises).then(() => {
+      set_itemHeights(array);
+      refTotalHeight.current = final_height - windowHeight;
+      refSlider.current.setState({
+        actual_height: final_height - windowHeight,
+      });
+      refLoading.current.setState({ show: false });
+      // callback(data); // Call the callback function with the modified data
+    });
+  };
   const changeData = (_chapterId, _chapterName, _order = 0) => {
     const cur_flag = flag.current + 1;
     flag.current = cur_flag;
@@ -119,21 +175,8 @@ export default function ChapterScreen({ route, navigation }) {
     axios.get(server + "/chapter/" + _chapterId).then((res) => {
       if (flag.current == cur_flag) {
         setdata(res.data);
-        let array = [];
-        let final_height = 0;
-        res.data.forEach((element) => {
-          let height =
-            Math.floor((windowWidth * element.height) / element.width) + 15;
-          final_height += height;
-          array.push(height);
-        });
 
-        set_itemHeights(array);
-        refTotalHeight.current = final_height - windowHeight;
-        refSlider.current.setState({
-          actual_height: final_height - windowHeight,
-        });
-        refLoading.current.setState({ show: false });
+        processImageData(res.data);
       }
     });
 
@@ -152,7 +195,7 @@ export default function ChapterScreen({ route, navigation }) {
         }}
       >
         <Image
-          source={{ uri: server + item.imgUrl }}
+          source={{ uri: serverAWS + item.imgUrl }}
           style={{
             width: windowWidth,
             height: _height ? _height : 0,

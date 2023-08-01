@@ -3,8 +3,12 @@ import { Text, View, Image, Pressable, StyleSheet } from "react-native";
 import { Color } from "../../variable/Color";
 
 import { Font } from "../../variable/Font";
-const server = "http://13.250.45.19:3000";
-
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../../variable/constants";
+const server = EXPO_PUBLIC_API_URL;
+const serverAWS = EXPO_PUBLIC_API_AWS;
 function TrendingTag({ idManga, image, view, index, navigation }) {
   return (
     <Pressable
@@ -13,7 +17,7 @@ function TrendingTag({ idManga, image, view, index, navigation }) {
         navigation.navigate("MangaScreen", { idManga: idManga });
       }}
     >
-      <Image style={styles.manga} source={{ uri: server + image }}></Image>
+      <Image style={styles.manga} source={{ uri: serverAWS + image }}></Image>
 
       <View
         style={{

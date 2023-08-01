@@ -1,8 +1,13 @@
 import { StripeProvider } from "@stripe/stripe-react-native";
 import React, { useState, useEffect, useRef } from "react";
+
 import { Platform, Alert } from "react-native";
-const server = "http://13.250.45.19:3000";
+
 import Card from "./Card";
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../../variable/constants";
 
 export const publish =
   "pk_test_51KFt1gF2EZ3ThaNawwPxRUmGLA4U5dM8EsJylkm4FsSLOaF12kMNknwGcr3PkIhDgfQWmPkeN6L06UlYODn5xQAb00EHXtzkKZ";
@@ -22,7 +27,8 @@ export const API_URL = server;
 //         Alert.alert('Error', 'Unable to fetch publishable key. Is your server running?')
 //     }
 // }
-
+const serverAWS = EXPO_PUBLIC_API_AWS;
+const server = EXPO_PUBLIC_API_URL;
 function Stripe({ innerRef }) {
   const [publishableKey, setPublishableKey] = useState(publish);
 

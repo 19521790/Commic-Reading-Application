@@ -2,7 +2,6 @@ import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-const server = "http://13.250.45.19:3000";
 
 function CommentTag({ name, avatar, comment }) {
   return (

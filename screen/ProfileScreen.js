@@ -26,11 +26,16 @@ import { deleteResume, insertResume } from "../InteractServer/ResumeSave";
 import { InitialResume, Login, Logout, SetIdUser } from "../redux/actions";
 import SyncData from "../components/Popup/SyncData";
 import axios from "axios";
-const server = "http://13.250.45.19:3000";
+
 import ResumeReading from "../components/HomeScreen/ResumeReading";
 import Stripe from "../components/Stripe/Stripe";
 import { AntDesign } from "@expo/vector-icons";
-
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../variable/constants";
+const serverAWS = EXPO_PUBLIC_API_AWS;
+const server = EXPO_PUBLIC_API_URL;
 class ProfileScreen extends Component {
   constructor(props) {
     super(props);
@@ -105,7 +110,6 @@ class ProfileScreen extends Component {
     }
   }
   changeLoginInfo = (login) => {
-    console.log("hrllo");
     this.setState({ userLogin: login });
     this.successRef.current.setModalVisible(true);
     this.props.dispatch(Login());
@@ -227,7 +231,7 @@ class ProfileScreen extends Component {
   };
   render() {
     return (
-      <View>
+      <View style={{ height: "100%" }}>
         <ScrollView style={styles.container} keyboardShouldPersistTaps="always">
           <View
             style={[

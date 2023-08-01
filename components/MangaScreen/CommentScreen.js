@@ -15,9 +15,11 @@ import { useSelector } from "react-redux";
 import CommentTag from "./CommentTag";
 import { useRef } from "react";
 import axios from "axios";
-const server = "http://13.250.45.19:3000";
+
 import { getdata } from "../../InteractServer/GetUserSqlite";
+import { EXPO_PUBLIC_API_URL } from "../../variable/constants";
 function CommentScreen(props) {
+  const server = EXPO_PUBLIC_API_URL;
   const [show, setShow] = useState(false);
   const [comment, set_comment] = useState("");
   const [data, set_data] = useState([]);

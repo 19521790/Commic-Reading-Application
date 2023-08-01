@@ -1,12 +1,14 @@
 import React, { Component, useEffect } from "react";
 import { Text, View, StyleSheet, Image, Pressable } from "react-native";
 import { Font } from "../../variable/Font";
-const server = "http://13.250.45.19:3000";
+
 import dateFormat from "dateformat";
 import { useState } from "react";
 import { useRef } from "react";
 import { useMemo } from "react";
+import { EXPO_PUBLIC_API_AWS } from "../../variable/constants";
 function ResumeTag({ data_resume, navigation }) {
+  const serverAWS = EXPO_PUBLIC_API_AWS;
   const [distance_time, set_distance_time] = useState();
 
   useEffect(() => {
@@ -89,7 +91,7 @@ function ResumeTag({ data_resume, navigation }) {
       }
     >
       <Image
-        source={{ uri: server + data_resume.image_chapter }}
+        source={{ uri: serverAWS + data_resume.image_chapter }}
         style={styles.img}
       ></Image>
 

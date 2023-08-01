@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Pressable, Image } from "react-native";
 import { Color } from "../../variable/Color";
 import { Font } from "../../variable/Font";
-const server = "http://13.250.45.19:3000";
+
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { SetPurchase } from "../../redux/actions";
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../../variable/constants";
 
 export default function Chaps(props) {
   const {
@@ -18,7 +22,8 @@ export default function Chaps(props) {
     showLogin,
     confirmPurchase,
   } = props;
-
+  const server = EXPO_PUBLIC_API_URL;
+  const serverAWS = EXPO_PUBLIC_API_AWS;
   const data = props.data[0];
   const [reverse_data, set_reverse_data] = useState([]);
   const [map_data, set_map_data] = useState([]);
@@ -94,7 +99,7 @@ export default function Chaps(props) {
               <View style={styles.container}>
                 <Image
                   style={styles.image}
-                  source={{ uri: server + item.ImageAPI }}
+                  source={{ uri: serverAWS + item.ImageAPI }}
                 />
                 <View style={styles.DetailContainer}>
                   <Text style={Font.baseTitle}>

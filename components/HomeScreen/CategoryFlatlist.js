@@ -2,10 +2,15 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { View, Text, ScrollView } from "react-native";
-const server = "http://13.250.45.19:3000";
+
 import MangaTag from "../MangaList/MangaTag";
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../../variable/constants";
 
 export default function CategoryFlatlist({ navigation, type, other }) {
+  const server = EXPO_PUBLIC_API_URL;
   const [data, set_data] = useState([]);
   useEffect(() => {
     let check = true;

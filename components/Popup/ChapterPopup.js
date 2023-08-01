@@ -22,21 +22,25 @@ class ChapterPopup extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      modalVisible: false,
-    };
+    // this.state = {
+    //   modalVisible: props.visible,
+    // };
   }
 
-  setModalVisible = (visible) => {
-    this.setState({
-      modalVisible: visible,
-    });
-  };
+  // setModalVisible = (visible) => {
+  //   this.setState({
+  //     modalVisible: visible,
+  //   });
+  // };
 
   render() {
-    const { modalVisible } = this.state;
+    // const { modalVisible } = this.props.visible;
     return (
-      <Modal animationType={"slide"} transparent={true} visible={modalVisible}>
+      <Modal
+        animationType={"slide"}
+        transparent={true}
+        visible={this.props.visible}
+      >
         <TouchableOpacity
           style={{
             justifyContent: "flex-end",
@@ -44,7 +48,7 @@ class ChapterPopup extends Component {
           }}
           activeOpacity={1}
           onPressOut={() => {
-            this.setModalVisible(false);
+            this.props.setModalVisible(false);
           }}
         >
           <TouchableWithoutFeedback>
@@ -53,9 +57,9 @@ class ChapterPopup extends Component {
                 <Text style={Font.title}>Jump to Chapter</Text>
                 <Pressable
                   style={styles.circle}
-                  onPress={() => this.setModalVisible(false)}
+                  onPress={() => this.props.setModalVisible(false)}
                 >
-                  <Entypo name='chevron-down' size={24} color='white' />
+                  <Entypo name="chevron-down" size={24} color="white" />
                 </Pressable>
               </View>
               <View style={styles.line} />
@@ -63,7 +67,7 @@ class ChapterPopup extends Component {
                 <ChapsNavigate
                   data={this.props.dataChapter}
                   changeData={this.props.changeData}
-                  hidePopup={() => this.setModalVisible(false)}
+                  hidePopup={() => this.props.setModalVisible(false)}
                 />
               </ScrollView>
             </View>

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import GenreTag from "./GenreTag";
 import axios from "axios";
-const server = "http://13.250.45.19:3000";
 
 export default function ExploreCataLog({ data, navigation }) {
   return (

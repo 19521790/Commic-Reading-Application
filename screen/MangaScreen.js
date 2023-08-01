@@ -17,7 +17,7 @@ import { Entypo } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Font } from "../variable/Font";
 import axios from "axios";
-const server = "http://13.250.45.19:3000";
+
 import ContainerBody from "../components/MangaScreen/ContainerBody";
 import MangaSetting from "../components/Popup/MangaSettings";
 import ModelPopup from "../components/Popup/ModelPopup";
@@ -28,8 +28,14 @@ import { InitialResume, Login, SetIdUser } from "../redux/actions";
 import ConfirmManga from "../components/Popup/ConfirmManga";
 import SuccessLike from "../components/Popup/SuccessLike";
 import CommentScreen from "../components/MangaScreen/CommentScreen";
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../variable/constants";
 
 export default function MangaScreen({ route, navigation }) {
+  const serverAWS = EXPO_PUBLIC_API_AWS;
+  const server = EXPO_PUBLIC_API_URL;
   const [dataHeader, set_dataHeader] = useState([]);
   const [dataBody, set_dataBody] = useState([]);
   useEffect(() => {

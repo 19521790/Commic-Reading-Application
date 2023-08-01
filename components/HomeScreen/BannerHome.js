@@ -7,7 +7,7 @@ import {
   Pressable,
   Image,
 } from "react-native";
-const server = "http://13.250.45.19:3000";
+
 import { LinearGradient } from "expo-linear-gradient";
 import axios from "axios";
 import { useState } from "react";
@@ -17,9 +17,14 @@ import Circle from "../AllScreen/Circle";
 import NewStatus from "../AllScreen/NewStatus";
 import HotStatus from "../AllScreen/HotStatus";
 import SaveStatus from "../AllScreen/SaveStatus";
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../../variable/constants";
 export default function BannerHome({ navigation }) {
   const [data, set_data] = useState([]);
-
+  const server = EXPO_PUBLIC_API_URL;
+  const serverAWS = EXPO_PUBLIC_API_AWS;
   useEffect(() => {
     let check = true;
     axios.get(server + "/manga/random").then((res) => {
@@ -58,7 +63,7 @@ export default function BannerHome({ navigation }) {
     >
       <Image
         style={styles.bannerImg}
-        source={{ uri: server + data.ImageAPI }}
+        source={{ uri: serverAWS + data.ImageAPI }}
       />
       <LinearGradient
         // Background Linear Gradient

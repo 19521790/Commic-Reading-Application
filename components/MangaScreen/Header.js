@@ -3,12 +3,13 @@ import { Image, View, Text, StyleSheet } from "react-native";
 
 import { Color } from "../../variable/Color";
 import { Font } from "../../variable/Font";
-const server = "http://13.250.45.19:3000";
+
 import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import Circle from "../AllScreen/Circle";
 import BorderTags from "../AllScreen/BorderTags";
-
+import { EXPO_PUBLIC_API_AWS } from "../../variable/constants";
+const serverAWS = EXPO_PUBLIC_API_AWS;
 function Header({ data, count_chapter }) {
   const { ImageAPI, Likes, Name, TotalView, Author, Genre, New, Hot, Status } =
     data;
@@ -30,7 +31,7 @@ function Header({ data, count_chapter }) {
       {/* header chứa cover manga, thông tin manga */}
       <View style={styles.header}>
         <Image
-          source={{ uri: server + ImageAPI }}
+          source={{ uri: serverAWS + ImageAPI }}
           style={styles.mangaCover}
         ></Image>
         <View style={styles.mangaInfo}>

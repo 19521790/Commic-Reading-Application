@@ -16,7 +16,8 @@ import { InitialResume, PushPurchase, SetPurchase } from "../../redux/actions";
 
 import { Color } from "../../variable/Color";
 import { Font } from "../../variable/Font";
-const server = "http://13.250.45.19:3000";
+import { EXPO_PUBLIC_API_URL } from "../../variable/constants";
+const server = EXPO_PUBLIC_API_URL;
 
 //pop up login
 class ConfirmManga extends Component {

@@ -7,10 +7,15 @@ import { View, useWindowDimensions, ScrollView, Text } from "react-native";
 import { TabView, SceneMap, TabBar } from "react-native-tab-view";
 
 import { Color } from "../../variable/Color";
-const server = "http://13.250.45.19:3000";
-import SingleTabNewRelease from "./SingleTabNewRelease";
 
+import SingleTabNewRelease from "./SingleTabNewRelease";
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../../variable/constants";
 export default function TabScrollNewRelease({ navigation }) {
+  const serverAWS = EXPO_PUBLIC_API_AWS;
+  const server = EXPO_PUBLIC_API_URL;
   const layout = useWindowDimensions();
   const [data, set_data] = useState(new Object());
 

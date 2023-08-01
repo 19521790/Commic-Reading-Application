@@ -1,6 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
-const server = "http://13.250.45.19:3000";
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../../variable/constants";
+const serverAWS = EXPO_PUBLIC_API_AWS;
 
 function GenreTag({ image, name, navigation, idCategory }) {
   return (
@@ -13,7 +17,7 @@ function GenreTag({ image, name, navigation, idCategory }) {
         })
       }
     >
-      <Image source={{ uri: server + image }} style={styles.img}></Image>
+      <Image source={{ uri: serverAWS + image }} style={styles.img}></Image>
       <Text style={styles.genreTitle} adjustsFontSizeToFit={true}>
         {name}
       </Text>

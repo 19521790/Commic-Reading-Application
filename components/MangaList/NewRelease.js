@@ -3,14 +3,16 @@ import { Text, View, Image, Pressable, StyleSheet } from "react-native";
 import { Color } from "../../variable/Color";
 
 import { Font } from "../../variable/Font";
-const server = "http://13.250.45.19:3000";
+
 import dateFormat from "dateformat";
 import NewStatus from "../AllScreen/NewStatus";
 import HotStatus from "../AllScreen/HotStatus";
 import SaveStatus from "../AllScreen/SaveStatus";
 import Circle from "../AllScreen/Circle";
+import { EXPO_PUBLIC_API_AWS } from "../../variable/constants";
 
 function NewRelease({ dataRelease, index, navigation }) {
+  const serverAWS = EXPO_PUBLIC_API_AWS;
   const {
     Name,
     DateAdded,
@@ -53,7 +55,7 @@ function NewRelease({ dataRelease, index, navigation }) {
       }
     >
       <Text style={[Font.baseTitle, { marginTop: 10 }]}>{index}</Text>
-      <Image style={styles.manga} source={{ uri: server + ImageAPI }} />
+      <Image style={styles.manga} source={{ uri: serverAWS + ImageAPI }} />
 
       <View style={{ justifyContent: "center", width: 160 }}>
         <Text style={[Font.baseTitle, { marginTop: 10 }]}>{Name}</Text>

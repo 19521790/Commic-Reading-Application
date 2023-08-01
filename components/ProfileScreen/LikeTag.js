@@ -1,16 +1,21 @@
 import React, { Component, useEffect } from "react";
 import { Text, View, StyleSheet, Image, Pressable } from "react-native";
 import { Font } from "../../variable/Font";
-const server = "http://13.250.45.19:3000";
+
 import dateFormat from "dateformat";
 import { useState } from "react";
 import { useRef } from "react";
 import { useMemo } from "react";
 import ConfirmManga from "../Popup/ConfirmManga";
 import Line from "../AllScreen/Line";
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../../variable/constants";
 function LikeTag({ data, navigation, hideModel }) {
+  const serverAWS = EXPO_PUBLIC_API_AWS;
   const [distance_time, set_distance_time] = useState();
-
+  const server = EXPO_PUBLIC_API_URL;
   useEffect(() => {
     getday();
   }, [data]);
@@ -57,7 +62,7 @@ function LikeTag({ data, navigation, hideModel }) {
       }}
     >
       <Image
-        source={{ uri: server + data.ImageAPI }}
+        source={{ uri: serverAWS + data.ImageAPI }}
         style={styles.img}
       ></Image>
 

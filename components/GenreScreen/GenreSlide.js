@@ -10,7 +10,7 @@ import {
   Pressable,
 } from "react-native";
 import { Color } from "../../variable/Color";
-const server = "http://13.250.45.19:3000";
+
 import images from "../SearchScreen/Banner";
 import { LinearGradient } from "expo-linear-gradient";
 import SaveStatus from "../AllScreen/SaveStatus";
@@ -18,6 +18,7 @@ import NewStatus from "../AllScreen/NewStatus";
 import HotStatus from "../AllScreen/HotStatus";
 import { Font } from "../../variable/Font";
 import Circle from "../AllScreen/Circle";
+import { EXPO_PUBLIC_API_AWS } from "../../variable/constants";
 
 const data = [
   {
@@ -32,6 +33,7 @@ const data = [
 ];
 
 export default function GenreSlide({ data, nameGenre, navigation }) {
+  const serverAWS = EXPO_PUBLIC_API_AWS;
   const width = Dimensions.get("window").width;
   const half_width = width / 2;
   const length_data = data.length;
@@ -136,7 +138,7 @@ export default function GenreSlide({ data, nameGenre, navigation }) {
       >
         <Image
           style={[styles.BannerImage, { width: width }]}
-          source={{ uri: server + data[length_data - 1].ImageAPI }}
+          source={{ uri: serverAWS + data[length_data - 1].ImageAPI }}
         />
         {data.map((item) => {
           return (
@@ -150,7 +152,7 @@ export default function GenreSlide({ data, nameGenre, navigation }) {
             >
               <Image
                 style={[styles.BannerImage, { width: width }]}
-                source={{ uri: server + item.ImageAPI }}
+                source={{ uri: serverAWS + item.ImageAPI }}
               />
               <LinearGradient
                 // Background Linear Gradient
@@ -177,7 +179,7 @@ export default function GenreSlide({ data, nameGenre, navigation }) {
         })}
         <Image
           style={[styles.BannerImage, { width: width }]}
-          source={{ uri: server + data[0].ImageAPI }}
+          source={{ uri: serverAWS + data[0].ImageAPI }}
         />
       </Animated.ScrollView>
       <View

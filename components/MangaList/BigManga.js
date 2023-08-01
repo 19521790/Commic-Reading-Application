@@ -11,10 +11,11 @@ import {
 import { Color } from "../../variable/Color";
 
 import { Font } from "../../variable/Font";
-const server = "http://13.250.45.19:3000";
+
 import { LinearGradient } from "expo-linear-gradient";
 import Circle from "../AllScreen/Circle";
 import BorderTags from "../AllScreen/BorderTags";
+import { EXPO_PUBLIC_API_AWS } from "../../variable/constants";
 
 function BigManga(props) {
   const {
@@ -34,7 +35,7 @@ function BigManga(props) {
     outputRange: [-60, 0, 60],
     extrapolate: "clamp",
   });
-
+  const serverAWS = EXPO_PUBLIC_API_AWS;
   return (
     <Pressable
       style={styles.viewManga}
@@ -47,7 +48,7 @@ function BigManga(props) {
       <View style={styles.cover_manga}>
         <Animated.Image
           style={[styles.manga, { transform: [{ translateX: translation }] }]}
-          source={{ uri: server + imageAPI }}
+          source={{ uri: serverAWS + imageAPI }}
         />
       </View>
 

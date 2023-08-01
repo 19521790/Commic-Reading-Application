@@ -5,10 +5,12 @@ import { useState } from "react";
 import { useRef } from "react";
 import { View, Text, Animated } from "react-native";
 import { Font } from "../../variable/Font";
-const server = "http://13.250.45.19:3000";
+
 import BigManga from "./BigManga";
+import { EXPO_PUBLIC_API_URL } from "../../variable/constants";
 
 export default function ParallaxSlide({ navigation }) {
+  const server = EXPO_PUBLIC_API_URL;
   const scroll_Pallax = useRef(new Animated.Value(0)).current;
   const [data, set_data] = useState([]);
 

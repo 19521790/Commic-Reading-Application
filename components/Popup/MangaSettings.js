@@ -13,11 +13,17 @@ import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-const server = "http://13.250.45.19:3000";
+
 import { Color } from "../../variable/Color";
 import Line from "../AllScreen/Line";
 import { connect } from "react-redux";
 import axios from "axios";
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../../variable/constants";
+const serverAWS = EXPO_PUBLIC_API_AWS;
+const server = EXPO_PUBLIC_API_URL;
 
 class MangaSetting extends Component {
   constructor(props) {
@@ -147,7 +153,7 @@ class MangaSetting extends Component {
             </Pressable>
             <View style={styles.headerContainer}>
               <Image
-                source={{ uri: server + this.props.image }}
+                source={{ uri: serverAWS + this.props.image }}
                 style={{ height: 50, width: 50, resizeMode: "cover" }}
               />
               <Text style={styles.name}>{this.props.name}</Text>

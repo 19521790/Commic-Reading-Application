@@ -2,10 +2,16 @@ import React, { Component, useEffect } from "react";
 import { Text, View, StyleSheet, Image, Pressable } from "react-native";
 import { Color } from "../../variable/Color";
 import { Font } from "../../variable/Font";
-const server = "http://13.250.45.19:3000";
+
 import Line from "../AllScreen/Line";
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../../variable/constants";
 
 function SearchTags({ data, navigation }) {
+  const serverAWS = EXPO_PUBLIC_API_AWS;
+  const server = EXPO_PUBLIC_API_URL;
   return (
     <Pressable
       style={styles.container}
@@ -16,7 +22,7 @@ function SearchTags({ data, navigation }) {
       }}
     >
       <Image
-        source={{ uri: server + data.ImageAPI }}
+        source={{ uri: serverAWS + data.ImageAPI }}
         style={styles.img}
       ></Image>
 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View, Image, Pressable, StyleSheet } from "react-native";
 
 import { Font } from "../../variable/Font";
-const server = "http://13.250.45.19:3000";
+
 import { Ionicons } from "@expo/vector-icons";
 import { Color } from "../../variable/Color";
 
@@ -10,8 +10,15 @@ import Circle from "../AllScreen/Circle";
 import NewStatus from "../AllScreen/NewStatus";
 import HotStatus from "../AllScreen/HotStatus";
 import SaveStatus from "../AllScreen/SaveStatus";
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../../variable/constants";
 
 function MangaTag(props) {
+  const server = EXPO_PUBLIC_API_URL;
+  const serverAWS = EXPO_PUBLIC_API_AWS;
+
   function description() {
     if (props.save) {
       return <SaveStatus save={props.save} />;
@@ -40,7 +47,7 @@ function MangaTag(props) {
     >
       <Image
         style={styles.manga}
-        source={{ uri: server + props.image_api }}
+        source={{ uri: serverAWS + props.image_api }}
       ></Image>
       {props.first_line && (
         <Text style={Font.description}>{props.first_line}</Text>

@@ -19,7 +19,7 @@ import CategoryFlatlist from "../components/HomeScreen/CategoryFlatlist";
 import ListFlatlist from "../components/HomeScreen/ListFlatlist";
 import { useEffect } from "react";
 import axios from "axios";
-const server = "http://13.250.45.19:3000";
+
 import BannerHome from "../components/HomeScreen/BannerHome";
 import ResumeTag from "../components/MangaList/ResumeTag";
 import { useSelector, useDispatch } from "react-redux";
@@ -34,8 +34,15 @@ import {
 import { getdata } from "../InteractServer/GetUserSqlite";
 import { Entypo } from "@expo/vector-icons";
 import ReadingHistory from "../components/Popup/ReadingHistory";
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../variable/constants";
 //màn hình HomeScreen
 export default function HomeScreen({ navigation }) {
+  const serverAWS = EXPO_PUBLIC_API_AWS;
+  const server = EXPO_PUBLIC_API_URL;
+
   const opacity_head = useRef(new Animated.Value(0)).current;
   const translation = opacity_head.interpolate({
     inputRange: [50, 300],

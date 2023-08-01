@@ -17,9 +17,14 @@ import { Font } from "../../variable/Font";
 import SearchPopup from "../Popup/SearchPopup";
 import { useEffect } from "react";
 import axios from "axios";
-const server = "http://13.250.45.19:3000";
+import {
+  EXPO_PUBLIC_API_AWS,
+  EXPO_PUBLIC_API_URL,
+} from "../../variable/constants";
 
 export default function SearchTabBar({ navigation }) {
+  const serverAWS = EXPO_PUBLIC_API_AWS;
+  const server = EXPO_PUBLIC_API_URL;
   const loose_focus = useRef();
   const seach_modal = React.createRef(null);
   const transform_search = useRef(new Animated.Value(0)).current;
